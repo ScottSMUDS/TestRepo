@@ -1,0 +1,73 @@
+---
+title: "Assignments and Gradings Live Session Assignment Unit 2"
+author: "Marvin Scott"
+date: "May 20, 2016"
+output: html_document
+---
+
+
+
+##R Markdown Document
+#Question 1
+# a.The log of a positive number
+```{r}
+log10(1000)
+```
+# b.The square-root of a positive number
+```{r}
+sqrt(25)
+
+```
+#Question 2
+# a.Create a vector of 15 standard normal random variables. 
+
+```{r}
+vector1<-runif(15, min=5, max = 27)
+vector1
+```
+# b.Calculate its mean and Standard Deviation.
+```{r}
+mean(vector1)
+sd(vector1)
+```
+# c.Change the mean to 10 and the SD to 2 and recalculate the vector of 15 random normal variables
+```{r}
+vector2<-rnorm(15, mean = 10, sd= 2)
+vector2
+
+```
+#Question 2
+# a.The weights of 6 individuals in kg are 60, 72, 57, 90, 95, 72
+#   Their heights (in m) are 1.80, 1.85, 1.72, 1.90, 1.74, 1.91
+#   Enter these vectors into R
+```{r}
+wgts_kg<- c(60,72,57,90,95,72)
+wgts_kg
+hgts_m<-c(1.80, 1.85, 1.72, 1.90, 1.74, 1.91)
+hgts_m
+```
+# b.Create a scatterplot of weight vs. height. Interpret the scatterplot
+```{r}
+plot(hgts_m,wgts_kg)
+
+```
+# c.Calculate the BMI for each individual (BMI = weight in kg divided by the square of the height in m)
+```{r}
+BMI<- wgts_kg/(hgts_m^2)
+BMI
+```
+# d.Calculate the mean for weight
+```{r}
+mean(wgts_kg)
+```
+# e.Subtract the mean from each value of weight
+```{r}
+l <-mean(wgts_kg)
+Subtract_mean<- l - wgts_kg
+Subtract_mean
+```
+# f.Sum the result
+```{r}
+ sum(Subtract_mean)
+
+```
