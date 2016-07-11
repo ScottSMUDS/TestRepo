@@ -1,0 +1,31 @@
+
+
+
+install.packages ("RCurl")
+library(RCurl)
+library(dplyr)
+x <- getURL("http://stat.columbia.edu/~rachel/datasets/nyt1.csv")
+getwd()
+setwd("C:/Users/Marvin/Documents\\DOIND DATA SCII")
+x <- read.csv(textConnection(x), header = TRUE, stringsAsFactors = FALSE)
+head(x)
+tail(x)
+str(x)
+summary(x)
+x<-select(x, Age,Gender ,Impressions,  Clicks, Signed_In)
+x$Age_Group <- cut(x$Age, c(-Inf, 17, 24, 34, 44, 54, 64, Inf))
+levels(x$Age_Group) <- c("<18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+")
+summary(x)
+impsub <- subset(x, Impressions>0)
+summary(impsub)
+impsub$CTR <- impsub$Clicks/impsub$Impressions
+summary(impsub)
+head(impsub)
+library(ggplot2)
+qplot(Impressions,Age, data = impsub, geom = c("point", "smooth") )
+qplot(Impressions,CTR, data = impsub, fill = Age_Group)
+qplot(Impressions,data = impsub, binwidth= .75 ,fill = Age_Group)
+qplot(Impressions,CTR, data = impsub, facets = .~ Age_Group)
+qplot(Impressions,CTR, data = impsub, color = Age_Group)
+
+
